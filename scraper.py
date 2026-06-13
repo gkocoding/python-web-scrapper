@@ -1,4 +1,5 @@
 import requests
+import csv
 from bs4 import BeautifulSoup
 
 response = requests.get('http://books.toscrape.com/')
@@ -17,3 +18,8 @@ for book in books:
     all_books.append(dictionary)
     
 print(all_books)
+
+with open('books.csv', 'w', newline='', encoding='utf-8') as f:
+    writer = csv.DictWriter(f, fieldnames=['title', 'price', 'rating'])
+    writer.writeheader()
+    writer.writerows(all_books)
