@@ -7,7 +7,6 @@ all_books = []
 
 while True:
     response = requests.get(f'http://books.toscrape.com/catalogue/page-{page_number}.html')
-    print(page_number)
     if response.status_code != 200:
         break
     soup = BeautifulSoup(response.content, 'html.parser')
